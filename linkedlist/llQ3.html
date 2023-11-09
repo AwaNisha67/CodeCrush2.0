@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        3. DOUBLY LINKED LIST STORING INTEGER VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)
+    </h2>
+    <pre><code>
+        #include &lt;stdio.h>
+#include &lt;stdlib.h>
+#include &lt;conio.h>
+
+typedef struct Node
+{
+    int data;
+    struct Node *next;
+    struct Node *prev;
+} Node;
+
+typedef struct LinkedList
+{
+    Node *head;
+    Node *end;
+    int length;
+} LinkedList;
+
+LinkedList *init()
+{
+    LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+    if (list == NULL)
+    {
+        printf("\n*** Memory Allocation Failed***\n");
+        return list;
+    }
+    list->end = NULL;
+    list->head = NULL;
+    list->length = 0;
+    return list;
+}
+
+void print(LinkedList *list)
+{
+    if (list->head == NULL)
+        return;
+    Node *temp = list->head;
+    printf("\n*******\nList: ");
+
+    while (temp)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n*******\n");
+}
+
+void insertAtBeg(LinkedList *list, int data)
+{
+    Node *newNode = (Node *)malloc(sizeof(Node));
+
+    if (newNode == NULL)
+    {
+        printf("\n***** List is Full ******\n");
+        return;
+    }
+
+    newNode->prev = NULL;
+    newNode->data = data;
+
+    newNode->next = list->head;
+
+    if (list->head == NULL)
+    {
+        list->end = newNode;
+    } // only single node in the list so it is the end also
+    else
+    {
+        list->head->prev = newNode;
+    }
+    list->head = newNode;
+    (list->length)++;
+}
+
+void insertAtEnd(LinkedList *list, int data)
+{
+
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (newNode == NULL)
+    {
+        printf("\n**** List is Full ****\n");
+        return;
+    }
+
+    newNode->data = data;
+    newNode->next = NULL;
+
+    newNode->prev = list->end;
+    if (list->head == NULL)
+    { // list is empty
+        list->head = newNode;
+    }
+    else
+    {
+        list->end->next = newNode;
+    }
+
+    list->end = newNode;
+    (list->length)++;
+}
+
+void insertAtPos(LinkedList *list, int pos, int data)
+{
+
+    if (pos == 1)
+    {
+        insertAtBeg(list, data);
+        return;
+    }
+    else if (pos == (list->length) + 1)
+    {
+        insertAtEnd(list, data);
+        return;
+    }
+    else if (pos > (list->length) + 1)
+    {
+        printf("\n***** Invalid Position ****\n");
+        return;
+    }
+
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (newNode == NULL)
+    {
+        printf("******** List is full! ********\n");
+        return;
+    }
+    newNode->data = data;
+
+    Node *temp = list->head;
+
+    for (int i = 1; i &lt;= pos - 2; i++)
+    {
+        temp = temp->next;
+    }
+
+    printf("\ntemp data->%d\n", temp->data);
+
+    newNode->prev = temp;
+    newNode->next = temp->next;
+    temp->next->prev = newNode;
+    temp->next = newNode;
+
+    (list->length)++;
+}
+
+void deleteAtBeg(LinkedList *list)
+{
+    if (list->head == NULL)
+        return;
+
+    Node *nodeToDelete = list->head;
+
+    nodeToDelete->next->prev = NULL;
+    list->head = nodeToDelete->next;
+    free(nodeToDelete);
+    (list->length)--;
+}
+
+void deleteAtEnd(LinkedList *list)
+{
+
+    if (list->head == NULL)
+        return;
+
+    Node *nodeToDelete = list->end;
+    if (list->head->next == NULL)
+    { // only one node in the list
+
+        list->head = NULL;
+        list->end = NULL;
+    }
+    else
+    {
+        nodeToDelete->prev->next = NULL;
+        list->end = nodeToDelete->prev;
+    }
+    free(nodeToDelete);
+    (list->length)--;
+}
+
+void deleteAtPos(LinkedList *list, int pos)
+{
+    if (pos == 1)
+    {
+        deleteAtBeg(list);
+        return;
+    }
+    else if (pos == (list->length))
+    {
+        deleteAtEnd(list);
+        return;
+    }
+    else if (pos > (list->length))
+    {
+        printf("\n**** Invalid Position ***\n");
+        return;
+    }
+
+    Node *temp = list->head;
+    for (int i = 1; i &lt;= pos - 2; i++)
+    {
+        temp = temp->next;
+    }
+
+    Node *nodeToDelete = temp->next;
+    nodeToDelete->next->prev = temp;
+    temp->next = nodeToDelete->next;
+    free(nodeToDelete);
+    (list->length)--;
+}
+
+void printBackward(LinkedList *list)
+{
+    if (list->end == NULL)
+        return;
+
+    Node *temp = list->end;
+    printf("\n*******\nList: ");
+
+    while (temp)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->prev;
+    }
+    printf("\n*******\n");
+}
+
+int isEmpty(LinkedList *list)
+{
+    return list->head == NULL;
+}
+
+int search(LinkedList *list, int target)
+{
+
+    if (list->head == NULL)
+        return 0;
+
+    Node *temp = list->head;
+
+    while (temp)
+    {
+        if (temp->data == target)
+            return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+
+int main()
+{
+    LinkedList *list = init();
+    int choice, val, position;
+
+    do
+    {
+
+        printf("\n1.Insert at Beginning\n2.Insert at Position\n3.Insert at End\n4.Delete at Beginning\n5.Delete at Position\n6.Delete at End\n7.Print\n8.Print Backwards\n9.isEmpty\n10.Search\n11.Exit\nChoice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("Enter the Value to Insert: ");
+            scanf("%d", &val);
+            insertAtBeg(list, val);
+            break;
+        case 2:
+            printf("Enter the Position:");
+            scanf("%d", &position);
+            printf("Enter the Value to insert: ");
+            scanf("%d", &val);
+            insertAtPos(list, position, val);
+            break;
+        case 3:
+            printf("Enter the Value to Insert: ");
+            scanf("%d", &val);
+            insertAtEnd(list, val);
+            break;
+        case 4:
+            deleteAtBeg(list);
+            break;
+        case 5:
+            printf("Enter the Position: ");
+            scanf("%d", &position);
+            deleteAtPos(list, position);
+            break;
+        case 6:
+            deleteAtEnd(list);
+            break;
+        case 7:
+            print(list);
+            break;
+        case 8:
+            printBackward(list);
+            break;
+        case 9:
+            if (isEmpty(list))
+            {
+                printf("\n*** List is Empty ***\n");
+            }
+            else
+            {
+                printf("\n*** List is not Empty ***\n");
+            }
+            break;
+        case 10:
+            printf("Enter the Value to search for: ");
+            scanf("%d", &val);
+
+            if (search(list, val))
+            {
+                printf("*** %d is present in the List ***", val);
+            }
+            else
+            {
+                printf("*** %d is not present in the List ***", val);
+            }
+            break;
+        case 11:
+            break;
+        default:
+            printf("\n*** Invalid Input ***\n");
+            break;
+        }
+    } while (choice != 11);
+
+    return 0;
+}
+    </code></pre>
+</body>
+</html>

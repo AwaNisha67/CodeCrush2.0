@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+<h2>5. SINGLE LINKED LIST STORING STRING VALUES (INSERT AT BEGIN,INSERT AT POS,INSERT AT END,DELETE AT BEGIN,DELETE AT END, DELETE AT POS, ISEMPTY, ISFULL, DISPLAY, SEARCH)</h2>
+<pre>
+<code>
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#include &lt;conio.h>
+typedef struct Node
+{
+    char *data;
+    struct Node *next;
+} Node;
+typedef struct LinkedList
+{
+    Node *head;
+    Node *end;
+    int length;
+} LinkedList;
+LinkedList *init()
+{
+    LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+    list->end = NULL;
+    list->head = NULL;
+    list->length = 0;
+    return list;
+}
+int strlen(char str[])
+{
+    int i;
+    for (i = 0; str[i]; i++)
+        ;
+    return i;
+}
+void removeNewLineCharacter(char input[])
+{
+    int length = strlen(input);
+    if (length > 0 && input[length - 1] == '\n')
+    {
+        input[length - 1] = '\0';
+    }
+}
+        
+void insertAtBeg(LinkedList *list)
+{
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (newNode == NULL)
+    {
+        printf("\n***** List is Full ******\n");
+        return;
+    }
+    char input[100];
+    printf("Enter the value to insert: ");
+    fgets(input, 100, stdin);
+    removeNewLineCharacter(input);
+    int length = strlen(input);
+
+    if (length == 0)
+    {
+        printf("*****Value cannot be empty!*****\n");
+        return;
+    }
+
+    newNode->data = (char *)malloc(sizeof(char) * length);
+
+    for (int i = 0; i <= length; i++) // i<=length because null character should also be included
+    {
+        newNode->data[i] = input[i];
+    }
+
+    if (list->head == NULL)
+    {
+        newNode->next = NULL;
+        list->end = newNode;
+        list->head = newNode;
+        (list->length)++;
+        return;
+    }
+
+    newNode->next = list->head;
+    list->head = newNode;
+    (list->length)++;
+}
+
+void insertAtEnd(LinkedList *list)
+{
+    Node *newNode = (Node *)malloc(sizeof(Node));
+
+    if (newNode == NULL)
+    {
+        printf("\n**** List is Full****\n");
+        return;
+    }
+
+    char input[100];
+    printf("\nEnter the value to insert: ");
+    fgets(input, 100, stdin);
+    removeNewLineCharacter(input);
+    int length = strlen(input);
+
+    if (length == 0)
+    {
+        printf("*****Value cannot be empty!*****\n");
+        return;
+    }
+
+    newNode->data = (char *)malloc(sizeof(char) * length);
+    newNode->next = NULL;
+    for (int i = 0; i <= length; i++) // i<=length because null character should also be included
+    {
+        newNode->data[i] = input[i];
+    }
+
+    if (list->head == NULL)
+    {
+        list->head = newNode;
+    }
+    else
+    {
+        list->end->next = newNode;
+    }
+    list->end = newNode;
+    (list->length)++;
+}
+
+void insertAtPos(LinkedList *list, int position)
+{
+    if (position == 1)
+    {
+        insertAtBeg(list);
+        return;
+    }
+    else if (position > (list->length) + 1)
+    {
+        printf("******** Invalid position ********\n");
+        return;
+    }
+    else if (position == (list->length) + 1)
+    {
+        insertAtEnd(list);
+        return;
+    }
+
+    Node *temp = list->head;
+
+    for (int i = 1; i < position - 1; i++)
+    {
+        temp = temp->next;
+    }
+
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (newNode == NULL)
+    {
+        printf("******** List is full! ********\n");
+        return;
+    }
+    char input[100];
+    printf("\nEnter the value to insert: ");
+    fgets(input, 100, stdin);
+    removeNewLineCharacter(input);
+    int length = strlen(input);
+
+    if (length == 0)
+    {
+        printf("*****Value cannot be empty!*****\n");
+        return;
+    }
+
+    newNode->data = (char *)malloc(sizeof(char) * length);
+
+    for (int i = 0; i <= length; i++) // i<=length because null character should also be included
+    {
+        newNode->data[i] = input[i];
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+    (list->length)++;
+}
+
+void deleteAtBeg(LinkedList *list)
+{
+    Node *temp = list->head;
+    list->head = (list->head)->next;
+    free(temp);
+    (list->length)--;
+}
+
+void print(LinkedList *list)
+{
+    printf("\n**********************\nList:");
+    Node *temp = list->head;
+    while (temp)
+    {
+        printf("%s, ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n**********************\n");
+}
+
+int isEmpty(LinkedList *list)
+{
+    return list->head == NULL;
+}
+
+void deleteAtEnd(LinkedList *list)
+{
+
+    Node *temp = list->head;
+
+    // Only one node in the list
+    if (temp->next == NULL)
+    {
+        list->head = NULL;
+        list->end = NULL;
+        free(temp);
+        (list->length)--;
+        return;
+    }
+
+    while (temp->next != list->end)
+    {
+        temp = temp->next;
+    }
+
+    free(list->end);
+    temp->next = NULL;
+    list->end = temp;
+    (list->length)--;
+}
+
+int search(LinkedList *list, char word[])
+{
+
+    Node *temp = list->head;
+
+    while (temp)
+    {
+        if (word[0] == temp->data[0])
+        {
+
+            int i = 1; // match the remaining letters
+            int wordLength = strlen(temp->data);
+            removeNewLineCharacter(word);
+            for (; temp->data[i]; i++)
+            {
+                if (word[i] != temp->data[i])
+                {
+                    return 0;
+                }
+            }
+
+            if (word[i] == '\0' && temp->data[i] == '\0')
+            {
+                return 1;
+            }
+        }
+
+        temp = temp->next;
+    }
+
+    return 0;
+}
+
+void deleteAtPos(LinkedList *list, int position)
+{
+
+    if (position == 1)
+    {
+        deleteAtBeg(list);
+        return;
+    }
+    else if (position == list->length)
+    {
+        deleteAtEnd(list);
+        return;
+    }
+    else if (position <= 0 || position > list->length)
+    {
+        printf("*******Invalid Position********\n");
+        return;
+    }
+
+    Node *temp = list->head;
+
+    for (int i = 1; i < position - 1; i++)
+    {
+        temp = temp->next;
+    }
+
+    Node *nodeToDelete = temp->next;
+    temp->next = nodeToDelete->next;
+    free(nodeToDelete);
+    (list->length)--;
+}
+
+int main()
+{
+    LinkedList *list = init();
+
+    int pos;
+    char word[100], choice;
+    do
+    {
+        printf("1.Insert at Beginning\n2.Insert at Position\n3.Insert at End\n4.Delete at Beginning\n5.Delete at Position\n6.Delete at End\n7.isEmpty\n8.Display\n9.Search\n0.Exit\nChoice: ");
+        choice = getche();
+
+        switch (choice)
+        {
+        case '1':
+            insertAtBeg(list);
+            break;
+        case '2':
+            printf("\nEnter the Position: ");
+            scanf("%d", &pos);
+            getchar(); // to get rid of the newline character
+            insertAtPos(list, pos);
+            break;
+        case '3':
+            insertAtEnd(list);
+            break;
+        case '4':
+            if (isEmpty(list))
+            {
+                printf("\n*****The list is already Empty!******\n");
+            }
+            else
+            {
+                deleteAtBeg(list);
+            }
+            break;
+        case '5':
+            if (isEmpty(list))
+            {
+                printf("\n*****The list is already Empty!******\n");
+            }
+            else
+            {
+                printf("\nEnter the Position: ");
+                scanf("%d", &pos);
+                deleteAtPos(list, pos);
+            }
+            break;
+        case '6':
+            if (isEmpty(list))
+            {
+                printf("\n*****The list is already Empty!******\n");
+            }
+            else
+            {
+                deleteAtEnd(list);
+            }
+            break;
+        case '7':
+            if (isEmpty(list))
+            {
+                printf("\n*****The list is Empty!******\n");
+            }
+            else
+            {
+                printf("\n*****The list is Not  Empty!******\n");
+            }
+            break;
+        case '8':
+            if (isEmpty(list))
+            {
+                printf("\n*****The list is Empty!******\n");
+            }
+            else
+            {
+                print(list);
+            }
+            break;
+        case '9':
+            if (isEmpty(list))
+            {
+                printf("\n*****The list is Empty!******\n");
+            }
+            else
+            {
+                printf("\nEnter the word to search for: ");
+                fgets(word, 100, stdin);
+                if (search(list, word))
+                {
+                    printf("%s is present in the list!\n", word);
+                }
+                else
+                {
+                    printf("%s is not present in the list!\n", word);
+                }
+            }
+            break;
+        case '0':
+            break;
+        default:
+            printf("\n******Invalid Input********\n");
+            break;
+        }
+    } while (choice != '0');
+
+    return 0;
+}
+</code>
+</pre>
+</body>
+</html>
