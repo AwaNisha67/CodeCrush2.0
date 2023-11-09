@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q1: ENTER THE STRING FROM USER AND CONVERT IN UPPERCASE ?</h2>
+    <pre>
+        <code>
+#include&lt;stdio.h>
+void main(){
+    char s1[20];
+    int i;
+    printf("Enter a string:(in UPPERCASE ");
+    scanf("%s",s1);
+    
+    for(i=0;s1[i];i++){
+        if(s1[i]>=65 && s1[i]&lt;=90){
+            printf("%c",s1[i]+32);
+        }
+         else{
+            printf("%c",s1[i]);
+        }
+    }
+    
+}
+        </code>
+    </pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter a string:(in lowercase) HeeeLLLoooo
+HEEELLLOOOO
+    </code></pre>
+</body>
+</html>

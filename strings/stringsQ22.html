@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q22: ENTER THE STRING FROM THE USER, SORT THE STRING IN ASCENDING ORDER AND PRINT IT.</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    char str1[69];
+    int len = 0;
+
+    printf("Enter a string: ");
+    scanf("%s", str1);
+
+    // Calculate the length of the entered string
+    while (str1[len] != '\0') {
+        len++;
+    }
+
+    // Bubble sort for sorting string
+    for (int i = 0; i &lt; len - 1; i++) {
+        for (int j = 0; j &lt; len - i - 1; j++) {
+            if (str1[j] > str1[j + 1]) {
+              
+                char temp = str1[j];
+                str1[j] = str1[j + 1];
+                str1[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Sorted String in Ascending Order: %s\n", str1);
+
+}
+
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter a string: yelllow
+Sorted String in Ascending Order: elllowy
+
+</code></pre>
+</body>
+</html>

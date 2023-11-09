@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q13: ENTER THE STRING FROM THE USER AND COPY REVERSE OF THE STRING INTO ANOTHER STRING ?</h2>
+    <pre>
+        <code>
+#include&lt;stdio.h>
+#include&lt;conio.h>
+void main(){
+char st1[]={"Hello World"};
+int i,len=0;
+char temp,cpy[20];
+clrscr();
+for(i=0;st1[i];i++){
+ len++;
+ }
+printf("Length of the string: %d",len);
+for(i=0;i&lt;len/2;i++){
+ temp=st1[i];
+ st1[i]=st1[len-1-i];
+ st1[len-1-i]=temp;
+
+ }
+printf("\nReversed: %s",st1);
+//copying
+for(i=0;i&lt;len;i++){
+ cpy[i]=st1[i];
+}
+printf("\n Copied String : %s",cpy);
+getch();
+}
+        </code>
+    </pre>
+</body>
+</html>

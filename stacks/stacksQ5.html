@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q5: ENTER THE STRING FROM THE USER AND REVERSE THE STRING USING STACKS.</h2>
+    <pre><code>
+#include &lt;stdio.h>
+#define maxString 20
+
+int i = -1;
+char str[maxString];
+
+int isEmpty()
+{
+    return (i == -1);
+}
+
+int isFull()
+{
+    return (i == maxString - 1);
+}
+
+void push(char value)
+{
+    if (!isFull())
+    {
+        i++;
+        str[i] = value;
+    }
+}
+
+char pop()
+{
+    if (!isEmpty())
+    {
+        char popped = str[i];
+        i--;
+        return popped;
+    }
+    return '\0'; // Return null character if the stack is empty
+}
+
+int main()
+{
+    char inputString[20];
+    char reverseString[20];
+    int len = 0, idx = 0;
+
+    printf("Enter a string: ");
+    scanf("%s", inputString);
+
+    for (int i = 0; inputString[i]; i++)
+    {
+        len++;
+    }
+    printf("Length of the string: %d\n", len);
+
+    // Pushing each character onto the stack
+    for (int j = 0; j &lt; len; j++)
+    {
+        push(inputString[j]);
+    }
+
+    // Popping each character to reverse the string
+    while (!isEmpty())
+    {
+        reverseString[idx] = pop();
+        idx++;
+    }
+    reverseString[idx] = '\0';
+
+    printf("Reversed string: %s\n", reverseString);
+
+    return 0;
+}
+
+    </code></pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter a string: hello
+Length of the string: 5
+Reversed string: olleh
+    </code></pre>
+</body>
+</html>

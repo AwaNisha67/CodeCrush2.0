@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q20: ENTER THE STRING FROM THE USER AND COUNT THE NUMBER OF CHARACTERS, WORDS, SPACES AND LINES</h2>
+    <pre><code>
+#include&lt;stdio.h>
+void main(){
+    char text[100],charCount=0,spaceCount=0,wordCount=0,i=0;
+    printf("Enter a sentence:\n");
+    gets(text);
+    
+    while(text[i]!='\0'){
+        if(text[i] != ' '){
+            charCount++;
+        }
+        if(text[i] == 32){
+            spaceCount++;
+        }
+        if(text[i] == 32 && text[i+1] != 32){
+            wordCount++;
+        }
+        i++;
+    }
+    printf("Characters: %d",charCount);
+    printf("\nSpaces: %d",spaceCount);
+    printf("\nWords: %d",wordCount);
+}
+
+    </code></pre>
+    <h2>Output:-</h2>
+    <pre><code>
+
+Enter a sentence:
+hello world how are you 
+Characters: 19
+Spaces: 5
+Words: 5
+    </code></pre>
+</body>
+</html>

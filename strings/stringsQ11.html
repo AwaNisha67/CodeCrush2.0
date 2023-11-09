@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q11: ENTER THE STRING FROM USER AND CHECK ITS PALINDROME OR NOT?</h2>
+    <pre>
+        <code>
+            #include &lt;stdio.h>
+
+int main() {
+    char str1[69];
+    int len = 0;
+    int isPalindrome = 1; // Assumimg ki it's a palindrome by default   
+    printf("Enter a string: ");
+    scanf("%s", str1);
+
+    // Calculate the length of the entered string
+    while (str1[len] != '\0') {
+        len++;
+    }
+    for (int i = 0; i &lt; len / 2; i++) {
+        if (str1[i] != str1[len - 1 - i]) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+                    
+if (isPalindrome == 1) {
+    printf("The entered string is a palindrome.\n");
+} else {
+    printf("The entered string is not a palindrome.\n");
+}
+
+ return 0;
+}
+              
+        </code>
+    </pre>
+</body>
+</html>

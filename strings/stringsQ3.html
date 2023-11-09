@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q3: ENTER THE STRING FROM USER AND CONVERT INTO SENTENCE CASE ?</h2>
+    <pre>
+        <code>
+//small letters- 97-122
+//capital letters - 65-90
+#include&lt;stdio.h>
+#include&lt;conio.h>
+void sent(char *,int );
+void main(){
+char str[20];
+int len,i,count=0;
+clrscr();
+printf("Enter a sentence: ");
+gets(str);
+for(i=0;str[i];i++){
+ count++;
+ }
+len=count;
+printf("\nLength of the sentence is: %d \n",len);
+
+sent(str,len);
+printf("%s",str);
+
+getch();
+}
+void sent(char *str,int len){
+int i;
+for(i=0;i&lt;len;i++){
+ if(i==0 && (str[i]>=92 && str[i]&lt;=122)){
+  str[i]=str[i]-32;
+ }
+ else if(str[i]==46){ //ie"."
+  if(str[i+1]>=92 && str[i+1]&lt;=122){
+   str[i+1]=str[i+1]-32;
+  }
+  else{
+   if(str[i+2]>=92 && str[i+2]&lt;=122){
+    str[i+2]=str[i+2]-32;
+   }
+}
+  }
+ }
+}
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter a sentence: hello how are you 
+Length of the sentence is: 18 
+Hello how are you 
+</code></pre>
+</body>
+</html>

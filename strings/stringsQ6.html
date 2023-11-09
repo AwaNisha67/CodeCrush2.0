@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q6: ENTER THE STRING FROM USER AND FINAL LENGTH OF THE STRING ?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    char st1[50];  
+    char ch;
+    int len = 0;
+
+    printf("Enter a string: ");
+    
+    while (1) {
+        ch = getchar();  //har character ko read karega
+        if (ch == '\n' || ch == '\r' || ch == '\0') {
+            break;
+        }
+        st1[len] = ch;
+        len++;
+    }
+    st1[len] = '\0';
+
+    printf("You entered: %s\n", st1);
+    printf("Final length of the string: %d\n", len);
+}
+                
+        </code>
+    </pre>
+</body>
+</html>

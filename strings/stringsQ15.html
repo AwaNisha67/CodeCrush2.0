@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q15: ENTER THE STRING FROM THE USER, ENTER A CHARACTER ALSO AND SEARCH THE CHARACTER IN THE STRING?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    char str1[69]; // Assuming a maximum input length of 100 characters
+    char search;
+    int len = 0,found = 0,count=0;
+    printf("\nEnter a string: ");
+    scanf("%s", str1);
+
+    // Calculate the length of the entered string
+    while (str1[len] != '\0') {
+        len++;
+    }
+   printf("Length of the entered string: %d\n",len);
+    printf("Enter a character to search for: ");
+    scanf(" %c", &search);
+
+    for (int i = 0; i &lt; len; i++) {
+        if (str1[i] == search) {
+            count++;
+            found = 1;
+             // Character found
+        }
+    }
+
+    if (found == 1) {
+        printf("Character '%c' is found in the string %d time.\n", search,count);
+    } else {
+        printf("Character '%c' is not found in the string.\n", search);
+    }
+}
+
+        </code>
+    </pre>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Stacks in DataStructure</title>
+</head>
+<body>
+    <h1>CREATE A STACK IMPLEMENTING THE OPERATIONS ON THE CHARACTERS ARRAY (PUSH, POP, PEEK, ISEMPTY, ISFULL)</h1>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+                
+int push(char arr[], int size, char value, int *i) {
+    if (*i >= size - 1) {
+        printf("Stack is full\n");
+    } else {
+        (*i)++;
+        arr[*i] = value;
+    }
+}
+
+char pop(char arr[], int size, int *i) {
+    char value;
+    if (*i == -1) {
+        printf("Stack is empty\n");
+        return '\0'; // Return a default value to indicate an empty stack
+    } else {
+        value = arr[*i];
+        (*i)--;
+        return value;
+    }
+}
+
+int isEmpty(int i) {
+    if (i == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack is not empty yet\n");
+    }
+}
+
+void isFull(int size, int i) {
+    if (i >= size - 1) {
+        printf("Stack is full\n");
+    } else {
+        printf("Stack is not full yet\n");
+    }
+}
+
+void display(char arr[], int size, int i) {
+    int k;
+    if (i == -1) {
+        printf("Stack is empty\n");
+    } else {
+        for (k = 0; k &lt;= i; k++) {
+            printf("%c ", arr[k]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    char arr[69];
+    int size, ch;
+    int i = -1;
+    char value;
+
+    printf("Enter size of the array: ");
+    scanf("%d", &size);
+
+    printf("Press 1: To push a character\n");
+    printf("Press 2: To pop a character\n");
+    printf("Press 3: To peek\n");
+    printf("Press 4: To check if empty\n");
+    printf("Press 5: To check if full\n");
+    printf("Press 6: To display\n");
+    printf("Press 7: Exit\n");
+
+    while (1) {
+        printf("\nEnter choice: ");
+        scanf("%d", &ch);
+        switch (ch) {
+            case 1:
+                printf("Enter character to push: ");
+                scanf(" %c", &value); // Read a character with a space to skip leading whitespace
+                push(arr, size, value, &i);
+                break;
+
+            case 2:
+                value = pop(arr, size, &i);
+                if (value != '\0') {
+                    printf("Popped value: %c\n", value);
+                }
+                break;
+
+            case 3://peek(arr, size, i);
+                break;
+
+            case 4:
+                isEmpty(i);
+                break;
+
+            case 5:
+                isFull(size, i);
+                break;
+
+            case 6:
+                display(arr, size, i);
+                break;
+
+            case 7:
+                printf("****Code has been terminated****\n");
+                exit(0);
+
+            default:
+                printf("***Invalid Choice***\n");
+                break;
+        }
+    }
+
+    return 0;
+}
+                
+        </code>
+    </pre>
+</body>
+</html>

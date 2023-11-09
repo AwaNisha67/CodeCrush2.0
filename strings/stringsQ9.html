@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q9: ENTER THE STRING FROM USER AND COPY IT INTO ANOTHER STRING VARIABLE?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    char str1[100]; 
+    char str2[100];   
+    char ch;
+    int len=0,i;
+
+    printf("\nEnter a string: ");
+    scanf("%s",str1);
+    
+    for(int i=0;str1[i];i++){
+        len++;
+    }
+    printf("\nLength of the entered String is: %d",len);
+    for (i = 0; i &lt;= len; i++) {
+        str2[i] = str1[i];
+    }
+
+    printf("\nOriginal String: %s\n", str1);
+    printf("Copied String: %s\n", str2);
+
+    return 0;
+}
+                
+        </code>
+    </pre>
+</body>
+</html>

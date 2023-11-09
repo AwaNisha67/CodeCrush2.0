@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q16: ENTER THE STRING FROM THE USER, ALSO ENTER A CHARACTER AND PRINT THE INDEX OF THE CHARACTER IF IT IS EXIST IN THE STRING ELSE PRINT -1.</h2>
+    <pre>
+    <code>
+#include &lt;stdio.h>
+int main() {
+    char str1[69]; 
+    char search;
+    int len = 0,found = -1,count=0;
+    printf("\nEnter a string: ");
+    scanf("%s", str1);
+
+    
+    while (str1[len] != '\0') {
+        len++;
+    }
+   printf("Length of the entered string: %d\n",len);
+    printf("Enter a character to search for: ");
+    scanf(" %c", &search);
+
+    for (int i = 0; i &lt; len; i++) {
+        if (str1[i] == search) {
+            count++;
+            found = 1;
+             // Character found
+        }
+    }
+
+    if (found == 1) {
+        printf("Character '%c' is found in the string %d time.\n", search,count);
+    } else {
+        printf("%d\n(NOT FOUND)", found);
+    }
+}
+
+    </code>
+</pre>
+</body>
+</html>

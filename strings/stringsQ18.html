@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q18: ENTER THE STRING FROM THE USER AND CONVERT INTO AN INTEGER VALUE?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    char str1[69];
+    int len = 0;
+    printf("\nEnter a string: ");
+    scanf("%s", str1);
+
+    // Calculate the length of the entered string
+    while (str1[len] != '\0') {
+        len++;
+    }
+   printf("Length of the entered string: %d\n",len);
+
+    for (int i = 0; str1[i]; i++) {
+        printf("%c = %d\n",str1[i],str1[i]);
+    }
+}
+                
+        </code>
+    </pre>
+</body>
+</html>
