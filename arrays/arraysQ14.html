@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>
+        Q14: Enter an array from user and print all possible combinations of the elements?
+    </h2>
+    <pre>
+        <code>
+#include&lt;stdio.h>
+    int main(){
+        int arr[50],size, i, j, count=0;
+        printf("Enter size of the array: ");
+        scanf("%d",&size);
+        printf("Enter values of your array: ");
+        for(i=0; i&lt;size; i++){
+            printf("\n%d element",i);
+            scanf("%d", &arr[i]);
+        }
+        printf("Your values are: ");
+        for(i=0; i&lt;size; i++){
+            printf(" %d ", arr[i]);
+        }
+        printf("\n");
+        for(i=0; i&lt;size; i++){
+            for(j=0; j&lt;size; j++){
+                    printf(" %d %d\n ", arr[i], arr[j]);
+                                
+            }
+         }
+        return 0;
+    }           
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter size of the array: 2
+Enter values of your array: 
+0 element10
+1 element20
+Your values are:  10  20 
+ 10 10
+ 10 20
+ 20 10
+ 20 20
+ 
+</code></pre>
+</body>
+</html>

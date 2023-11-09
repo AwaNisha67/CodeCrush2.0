@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Enter an array from user and find the k-th smallest value?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+int arr[20], i, size, k,temp;
+                
+printf("Enter how many elements: ");
+scanf("%d", &size);
+                
+for (i = 0; i &lt; size; i++) {
+     printf("Enter %dth element: ", i);
+     scanf("%d", &arr[i]);
+}
+                
+printf("Enter the value(index) of k to find the k-th smallest element: ");
+scanf("%d", &k);
+                
+if (k > 0 && k &lt;= size) {
+    for (i = 0; i &lt; size-1; i++) {
+        for (int j = 0; j&lt;size-i-1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+             }
+         }
+     }
+printf("The %d-th smallest element is: %d\n", k, arr[k - 1]);
+else {
+    printf("Invalid value\n");
+    }
+}
+                
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter how many elements: 5
+Enter 0th element: 10
+Enter 1th element: 20
+Enter 2th element: 30
+Enter 3th element: 40
+Enter 4th element: 50
+Enter the value(index) of k to find the k-th smallest element: 4
+The 4-th smallest element is: 40
+</code></pre>
+</body>
+</html>

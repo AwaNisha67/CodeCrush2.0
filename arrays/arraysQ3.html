@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Enter an array from user and copy the array into second array ?</h1>
+    <pre>
+        <code>
+#include&lt;stdio.h>
+void main(){
+    int arr[69],brr[69],size,i;
+    printf("\nEnter the size of the array: ");
+    scanf("%d",&size);
+    
+    printf("\nEnter elements of the array: ");
+    for(i=0;i&lt;size;i++){
+        printf("\n%dth element: ",i);
+        scanf("%d",&arr[i]);
+    }
+    printf("Array entered:\n ");
+    for(i=0;i &lt;size;i++){
+        printf("%4d",arr[i]);
+    }
+    for(i=0;i&lt;size;i++){
+        brr[i]=arr[i];
+    }
+     printf("\nCopied Array:\n ");
+    for(i=0;i&lt;size;i++){
+        printf("%4d",brr[i]);
+    }
+}
+        </code>
+    </pre>
+    <h2>Output-:</h2>
+    <pre>
+        <code>
+            Enter the size of the array: 5
+            Enter elements of the array: 
+            0th element: 10
+            1th element: 20
+            2th element: 30
+            3th element: 40
+            4th element: 50
+            Array entered:
+               10  20  30  40  50
+            Copied Array:
+            10  20  30  40  50
+        </code>
+    </pre>
+</body>
+</html>

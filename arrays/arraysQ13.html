@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Enter an array from user and count the duplicate values?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    int arr[20], i, j, size, count = 0;
+                
+    printf("Enter how many elements: ");
+    scanf("%d", &size);
+                
+    for (i = 0; i &lt;size; i++) {
+        printf("Enter %dth element: ", i);
+         scanf("%d", &arr[i]);
+    }
+                
+    for (i = 0; i &lt; size; i++) {
+        for (j = i + 1; j &lt; size; j++) {
+            if (arr[i] == arr[j]) {
+                                
+                count++;
+                break;
+            }
+        }
+    }
+                
+    printf("Number of duplicate values in the array: %d\n", count);
+                
+    return 0;
+}
+                
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter how many elements: 10
+Enter 0th element: 10
+Enter 1th element: 20
+Enter 2th element: 30
+Enter 3th element: 10
+Enter 4th element: 40
+Enter 5th element: 20
+Enter 6th element: 50
+Enter 7th element: 30
+Enter 8th element: 60
+Enter 9th element: 70
+The Number of duplicate values in the array: 3
+
+</code></pre>
+</body>
+</html>

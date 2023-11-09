@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q18:Find Local minima in the array?</h2>
+    <pre>
+        <code>
+ // Find the local minima in the array?
+ #include &lt;stdio.h>
+
+    void takeInput(int arr[])
+    {
+        for (int i = 0; i &lt; 10; i++)
+        {
+            printf("Enter the value for the %d position: ", i + 1);
+            scanf("%d", &arr[i]);
+        }
+    }
+    
+    int FindLocalMinima(int arr[], int length)
+    {
+        // first and last element
+        if (arr[0] &lt; arr[1])
+        {
+            printf("%d at index 0 is a local minimum\n", arr[0]);
+        }
+        if (arr[length - 1] &lt; arr[length - 2])
+        {
+            printf("%d at index %d is a local minimum\n", arr[length - 1], length - 1);
+        }
+        for (int i = 1; i &lt; length - 1; i++)
+        {
+            if ((arr[i] &lt; arr[i - 1]) && (arr[i] &lt; arr[i + 1]))
+            {
+                printf("%d at index %d is a local minimum\n", arr[i], i);
+            }
+        }
+    }
+    
+    int main()
+    {
+        int arr[10];
+        takeInput(arr);
+        FindLocalMinima(arr, 10);
+        return 0;
+    } 
+</code>
+    </pre>
+    <h2>Output:-</h2>
+    <pre><code>
+
+    </code></pre>
+</body>
+</html>

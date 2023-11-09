@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+</head>
+<body>
+    <h2>Enter an array from user and square all the values of array ?</h2>
+    <pre>
+        <code>
+//Square all the values of array
+#include&lt;stdio.h>
+#include&lt;conio.h>
+#include&lt;math.h>
+void main(){
+int arr[20],size,i,sqr;
+clrscr();
+printf("Enter how many elements: ");
+scanf("%d",&size);
+
+for(i=0;i&lt;size;i++){
+ printf("Enter %dth element: ",i);
+ scanf("%d",&arr[i]);
+ }
+
+for(i=0;i&lt;size;i++){
+  sqr=pow(arr[i],2);
+  printf("\nSqare of %d value is: %d",arr[i],sqr);
+}
+getch();
+}
+        </code>
+    </pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter how many elements: 5
+Enter 0th element: 10
+Enter 1th element: 20
+Enter 2th element: 30
+Enter 3th element: 40
+Enter 4th element: 50
+Sqare of 10 value is: 100
+Sqare of 20 value is: 400
+Sqare of 30 value is: 900
+Sqare of 40 value is: 1600
+Sqare of 50 value is: 2500
+    </code></pre>
+</body>
+</html>

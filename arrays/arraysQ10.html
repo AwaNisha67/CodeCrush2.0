@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q10: Enter an array from user and add all values ?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    int arr[20], i, size, sum = 0;
+                
+    printf("Enter how many elements: ");
+    scanf("%d", &size);
+                
+    for (i = 0; i &lt; size; i++) {
+        printf("Enter %dth element: ", i);
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+                
+printf("Sum of all elements in the array: %d\n", sum);
+}
+                
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter how many elements: 5
+Enter 0th element: 10
+Enter 1th element: 20
+Enter 2th element: 30
+Enter 3th element: 40
+Enter 4th element: 50
+Sum of all elements in the array: 150
+
+</code></pre>
+</body>
+</html>

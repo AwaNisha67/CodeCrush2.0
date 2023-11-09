@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Enter two arrays from the user and check they are same or not?</h2>
+    <pre><code>
+#include &lt;stdio.h>
+int main() {
+int arr1[20], arr2[20], i, size1,size2;
+        
+printf("Enter how many (1st)elements in array: ");
+scanf("%d", &size1);
+        
+printf("Enter elements for the first array:\n");
+for (i = 0; i &lt; size1; i++) {
+    printf("Enter %dth element: ", i);
+    scanf("%d", &arr1[i]);
+}
+printf("Enter how (2nd)many elements in array: ");
+scanf("%d", &size2);
+      
+printf("Enter elements for the second array:\n");
+for (i = 0; i &lt; size2; i++) {
+    printf("Enter %dth element: ", i);
+    scanf("%d", &arr2[i]);
+}
+if(size1 != size2){
+    printf("\nArrays are not of same size");
+
+}  
+else{
+int areEqual = 1; 
+// assume kar rhe ki array already equal hi
+        
+for (i = 0; i &lt; size1; i++) {
+    if (arr1[i] != arr2[i]) {
+        areEqual = 0;  // Arrays are not equal
+        break;
+    }
+}
+        
+if (areEqual == 1) {
+    printf("The two arrays are the same.\n");
+} else {
+    printf("The two arrays are not the same.\n");
+}
+}        
+ return 0;
+    
+}
+        </code></pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter how many (1st)elements in array: 3
+Enter elements for the first array:
+Enter 0th element: 10
+Enter 1th element: 20
+Enter 2th element: 30
+Enter how (2nd)many elements in array: 4
+Enter elements for the second array:
+Enter 0th element: 20
+Enter 1th element: 30
+Enter 2th element: 40
+Enter 3th element: 50
+Arrays are not of same size</code></pre>
+</body>
+</html>

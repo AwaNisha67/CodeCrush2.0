@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2> Enter an array from user and find maximum and minimum value?</h2>
+    <pre>
+        <code>
+#include&lt;stdio.h>
+void main(){
+    int arr[10],size,i,max,min;
+    printf("Enter the size of the arrays (1-10): ");
+    scanf("%d",&size);
+    
+    printf("Enter elements in the array:\n ");
+    for(i=0;i&lt;size;i++){
+        printf("%d element",i+1);
+        scanf("%d",&arr[i]);
+    }
+    printf("Maximum value in array: ");
+    max=arr[0];
+    for(i=0;i&lt;size;i++){
+        if(arr[i]>max){
+            max=arr[i];
+        }
+    }
+    printf("%d ",max);
+    
+    printf("\nMinimum value in array: ");
+    min=arr[0];
+    for(i=0;i&lt;size;i++){
+        if(arr[i]&lt;min){
+            min=arr[i];
+        }
+    }
+    printf("%d ",min);
+}
+        </code>
+    </pre>
+    <h2>Output:-</h2>
+    <pre>
+        <code>
+Enter the size of the arrays (1-10): 5
+Enter elements in the array:
+ 1 element10
+ 2 element20
+ 3 element30
+ 4 element40
+ 5 element50
+ Maximum value in array: 50 
+Minimum value in array: 10 
+        </code>
+    </pre>
+</body>
+</html>

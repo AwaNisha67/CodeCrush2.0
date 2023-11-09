@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+    
+</head>
+<body>
+    <h2>Q1: Enter an array from user and display all the value ?</h2>
+    <hr>
+
+    <pre>
+        <!-- <code class="language-C"> -->
+//Enter an array from user and display all the value ?
+#include&lt;stdio.h>
+void main(){
+    int arr[20], size, i;
+    printf("Enter the size of the array: ");
+    scanf("%d",&size);
+    for(i=0;i&lt;size;i++){
+        printf("\nValue on %dth index: ",i);
+        scanf("%d",&arr[i]);
+    }
+    //displaying the values
+    printf("\nEntered array:\n");
+    for(i=0;i&lt;size;i++){
+        printf("%4d",arr[i]);
+    }
+}
+            
+        <!-- </code> -->
+    </pre>
+    <h2>Output:-</h2>
+    <pre>
+        <code>
+Enter the size of the array: 5
+Value on 0th index: 10
+Value on 1th index: 20
+Value on 2th index: 30
+Value on 3th index: 40
+Value on 4th index: 50
+Entered array:
+  10  20  30  40  50
+        </code>
+    </pre>
+</body>
+</html>

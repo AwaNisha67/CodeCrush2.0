@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q11: Enter an array from user and find the duplicate values?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+int main() {
+int arr[20], i, j, size;
+                    
+printf("Enter how many elements: ");
+scanf("%d", &size);
+                
+for (i = 0; i &lt; size; i++) {
+     printf("Enter %dth element: ", i);
+    scanf("%d", &arr[i]);
+                    }
+                
+printf("Duplicate values in the array are: ");
+                    
+for (i = 0; i &lt; size; i++) {
+    for (j = i + 1; j &lt; size; j++) {
+        if (arr[i] == arr[j]) {
+            // Found a duplicate value
+            printf("%d ", arr[i]);
+            break; // Break to avoid printing the same duplicate multiple times
+        }
+    }
+}
+}
+                
+        </code>
+    </pre>
+
+<h2>Output:-</h2>
+<pre><code>
+Enter how many elements: 5
+Enter 0th element: 10
+Enter 1th element: 20
+Enter 2th element: 10
+Enter 3th element: 20
+Enter 4th element: 30
+Duplicate values in the array are: 10 20 
+</code></pre>
+</body>
+</html>
