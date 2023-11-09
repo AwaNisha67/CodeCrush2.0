@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h2>10. IMPLEMENT THE OPERATIONS OF DOUBLE ENDED QUEUE IN AN STRING ARRAY (INSERT, DELETE, PEEK, ISEMPTY, ISFULL)</h2>
+    <pre><code>
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
+#include &lt;string.h>
+
+void insertAtFront(char arr[], int size, int *front, int *rear, char value[]) {
+    if ((*rear + 1) % size == *front) {
+        printf("Deque is Full\n");
+        return;
+    }
+
+    if (*front == -1) {
+        *front = 0;
+        *rear = 0;
+    } else if (*front == 0) {
+        *front = size - 1;
+    } else {
+        (*front)--;
+    }
+
+    strcpy(arr + *front, value);
+}
+
+void insertAtRear(char arr[], int size, int *front, int *rear, char value[]) {
+    if ((*rear + 1) % size == *front) {
+        printf("Deque is Full\n");
+        return;
+    }
+
+    if (*front == -1) {
+        *front = 0;
+        *rear = 0;
+    } else {
+        *rear = (*rear + 1) % size;
+    }
+
+    strcpy(arr + *rear, value);
+}
+
+void deleteAtFront(char arr[], int size, int *front, int *rear) {
+    if (*front == -1) {
+        printf("Deque is empty\n");
+        return;
+    } else if (*front == *rear) {
+        *front = -1;
+        *rear = -1;
+    } else if (*front == size - 1) {
+        *front = 0;
+    } else {
+        (*front)++;
+    }
+}
+
+void deleteAtRear(char arr[], int size, int *front, int *rear) {
+    if (*front == -1) {
+        printf("Deque is empty\n");
+        return;
+    } else if (*front == *rear) {
+        *front = -1;
+        *rear = -1;
+    } else if (*rear == 0) {
+        *rear = size - 1;
+    } else {
+        (*rear)--;
+    }
+}
+
+void display(char arr[], int size, int front, int rear) {
+    int temp = front;
+
+    if (front == -1) {
+        printf("Deque is empty\n");
+        return;
+    }
+
+    printf("Elements in the deque are: ");
+    while (temp != rear) {
+        printf("%s ", arr + temp);
+        temp = (temp + 1) % size;
+    }
+    printf("%s\n", arr + rear);
+}
+
+int main() {
+    int size, front = -1, rear = -1, ch;
+    char value[50];
+    printf("Enter the size of the deque: ");
+    scanf("%d", &size);
+
+    char arr[size][50];
+
+    printf("\n**************Double Ended Queue**************");
+    printf("\nPress 1: To insert at front end");
+    printf("\nPress 2: To insert at rear");
+    printf("\nPress 3: To delete value at front");
+    printf("\nPress 4: To delete value at rear");
+    printf("\nPress 5: Display");
+    printf("\nPress 6: Exit the code");
+
+    while (1) {
+        printf("\nEnter your choice: ");
+        scanf("%d", &ch);
+
+        switch (ch) {
+            case 1:
+                printf("Enter the value to insert at front: ");
+                scanf("%s", value);
+                insertAtFront(arr, size, &front, &rear, value);
+                break;
+
+            case 2:
+                printf("Enter the value to insert at rear: ");
+                scanf("%s", value);
+                insertAtRear(arr, size, &front, &rear, value);
+                break;
+
+            case 3:
+                deleteAtFront(arr, size, &front, &rear);
+                break;
+
+            case 4:
+                deleteAtRear(arr, size, &front, &rear);
+                break;
+
+            case 5:
+                display(arr, size, front, rear);
+                break;
+
+            case 6:
+                printf("Exiting the code\n");
+                return 0;
+
+            default:
+                printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
+
+    </code></pre>
+</body>
+</html>
