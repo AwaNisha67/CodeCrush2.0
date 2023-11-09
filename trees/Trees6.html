@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+    <link href="/quest.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q6:FIND THE MAXIMUM DEPTH OF BINARY TREE</h2>
+    <pre><code>
+    #include stdio.h>
+    #include stdlib.h>
+    
+    struct TreeNode {
+        int data;
+        struct TreeNode* left;
+        struct TreeNode* right;
+    };
+    
+    typedef struct TreeNode TreeNode;
+    
+    TreeNode* createTreeNode(int data) {
+        TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
+    }
+    
+    TreeNode* buildBinaryTree() {
+        int data;
+        printf("Enter the root node value (or -1 for an empty node): ");
+        scanf("%d", &data);
+    
+        if (data == -1) {
+            return NULL; // Return NULL for empty nodes (represented by -1)
+        }
+    
+        TreeNode* root = createTreeNode(data);
+    
+        printf("Enter the left subtree for %d:\n", data);
+        root->left = buildBinaryTree();
+    
+        printf("Enter the right subtree for %d:\n", data);
+        root->right = buildBinaryTree();
+    
+        return root;
+    }
+    
+    int findMaxDepth(TreeNode* root) {
+        if (root == NULL) {
+            return 0;
+        }
+    
+        int leftDepth = findMaxDepth(root->left);
+        int rightDepth = findMaxDepth(root->right);
+    
+        return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    }
+    
+    int main() {
+        TreeNode* root;
+    
+        printf("Enter the binary tree structure:\n");
+        root = buildBinaryTree();
+    
+        int maxDepth = findMaxDepth(root);
+        printf("Maximum depth of the binary tree: %d\n", maxDepth);
+    
+        return 0;
+    }
+    </code></pre>
+</body>
+</html>

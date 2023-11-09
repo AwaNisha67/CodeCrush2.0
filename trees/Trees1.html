@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q1:Construct binary tree from preorder and inorder traversal</h2>
+    <pre><code>
+        //CONSTRUCT BINARY TREE FROM PREORDER AND INORDER TRAVERSAL
+#include&lt;stdio.h>
+#include&lt;stdlib.h>
+struct BST{
+struct BST *left;
+int data;
+struct BST *right;
+};
+
+struct BST *buildTree(int *preorder,int *inorder,int preStart,int inStart,int inEnd){
+ if(preStart >= 0 && inStart &lt;= inEnd){
+    struct BST *nn=(struct BST*)malloc(sizeof(struct BST));
+    nn->data=preorder[preStart];
+    nn->left=nn->right=NULL;
+
+   int inIndex;//to check where is the root in inorder
+   for(inIndex=inStart; inIndex&lt;=inEnd; inIndex++){ 
+   if(inorder[inIndex] == preorder[preStart]){
+    break;
+   }
+}
+//left tree using recursion
+ nn->left=buildTree(preorder, inorder, preStart+1, inStart, inIndex-1);
+//right tree using recursion
+ nn->right=buildTree(preorder, inorder, preStart - inStart + inIndex+1, inIndex+1, inEnd);
+
+ return nn;
+}
+return NULL;
+}
+void binarytreePrint(struct BST *root){
+    if(root != NULL){
+     binarytreePrint(root->left);
+     printf("%d ",root->data);
+     binarytreePrint(root->right);
+    }
+}
+void main(){
+    int i,size;
+    printf("Enter size : ");
+    scanf("%d",&size);
+    int preorder[size],inorder[size];
+    printf("Enter preorder elements : ");
+    for(i=0;i&lt;size;i++){
+        printf("%d:",i+1);
+        scanf("%d",&preorder[i]);
+    }
+    printf("Enter inorder elements : ");
+    for(i=0;i&lt;size;i++){
+        printf("%d:",i+1);
+        scanf("%d",&inorder[i]);
+    }
+
+    struct BST *root=buildTree(preorder,inorder,0,0,size-1);
+    //traversing
+    binarytreePrint(root);
+
+}
+    </code></pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter size : 5
+Enter preorder elements : 1:100
+2:90
+3:80
+4:110
+5:120
+Enter inorder elements : 1:80
+2:90
+3:100
+4:120
+5:110
+80 90 100 120 110 
+    </code></pre>
+</body>
+</html>

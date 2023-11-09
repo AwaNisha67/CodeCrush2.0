@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q2:. BINARY TREE LEVEL ORDER TRAVERSAL</h2>
+    <pre><code>
+#include&lt;stdio.h> 
+#include &lt;stdlib.h
+
+struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+};
+
+struct QueueNode {
+    struct TreeNode* data;
+    struct QueueNode* next;
+};
+
+struct Queue {
+    struct QueueNode* front;
+    struct QueueNode* rear;
+};
+
+struct Queue* createQueue() {
+    struct Queue* queue = (struct Queue*)malloc(sizeof(struct Queue));
+    queue->front = NULL;
+    queue->rear = NULL;
+    return queue;
+}
+
+int isEmpty(struct Queue* queue) {
+    return (queue->front == NULL);
+}
+
+void enqueue(struct Queue* queue, struct TreeNode* data) {
+    struct QueueNode* newNode = (struct QueueNode*)malloc(sizeof(struct QueueNode));
+    newNode->data = data;
+    newNode->next = NULL;
+    if (isEmpty(queue)) {
+        queue->front = newNode;
+        queue->rear = newNode;
+    } else {
+        queue->rear->next = newNode;
+        queue->rear = newNode;
+    }
+}
+
+struct TreeNode* dequeue(struct Queue* queue) {
+    if (isEmpty(queue)) {
+        return NULL;
+    }
+    struct QueueNode* temp = queue->front;
+    struct TreeNode* data = temp->data;
+    queue->front = queue->front->next;
+    free(temp);
+    return data;
+}
+
+struct TreeNode* createNode(int data) {
+    struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+void levelOrderTraversal(struct TreeNode* root) {
+    if (root == NULL) {
+        return;
+    }
+
+    struct Queue* queue = createQueue();
+    enqueue(queue, root);
+
+    while (!isEmpty(queue)) {
+        struct TreeNode* current = dequeue(queue);
+        printf("%d ", current->data);
+
+        if (current->left != NULL) {
+            enqueue(queue, current->left);
+        }
+        if (current->right != NULL) {
+            enqueue(queue, current->right);
+        }
+    }
+}
+
+int main() {
+    int data;
+    struct TreeNode* root = NULL;
+
+    printf("Enter the root data: ");
+    scanf("%d", &data);
+    root = createNode(data);
+
+    struct Queue* queue = createQueue();
+    enqueue(queue, root);
+
+    while (!isEmpty(queue)) {
+        struct TreeNode* current = dequeue(queue);
+        int leftData, rightData;
+        printf("Enter left child data for %d (or -1 to skip): ", current->data);
+        scanf("%d", &leftData);
+        if (leftData != -1) {
+            current->left = createNode(leftData);
+            enqueue(queue, current->left);
+        }
+
+        printf("Enter right child data for %d (or -1 to skip): ", current->data);
+        scanf("%d", &rightData);
+        if (rightData != -1) {
+            current->right = createNode(rightData);
+            enqueue(queue, current->right);
+        }
+    }
+
+    printf("Level-Order Traversal of the Binary Tree: ");
+    levelOrderTraversal(root);
+    printf("\n");
+
+    return 0;
+}
+    </code></pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter the root data: 100
+Enter left child data for 100 (or -1 to skip): 90
+Enter right child data for 100 (or -1 to skip): 110
+Enter left child data for 90 (or -1 to skip): 80
+Enter right child data for 90 (or -1 to skip): 120
+Enter left child data for 110 (or -1 to skip): 95
+Enter right child data for 110 (or -1 to skip): 130
+Enter left child data for 80 (or -1 to skip): -1
+Enter right child data for 80 (or -1 to skip): -1
+Enter left child data for 120 (or -1 to skip): -1
+Enter right child data for 120 (or -1 to skip): -1
+Enter left child data for 95 (or -1 to skip): -1
+Enter right child data for 95 (or -1 to skip): -1
+Enter left child data for 130 (or -1 to skip): -1
+Enter right child data for 130 (or -1 to skip): -1
+Level-Order Traversal of the Binary Tree: 100 90 110 80 120 95 130 
+
+    </code></pre>
+</body>
+</html>
