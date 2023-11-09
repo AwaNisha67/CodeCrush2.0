@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/quest.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <h2>Q5. ENTER A INTEGER ARRAY FROM THE USER AND PERFORM INSERTION SORT ALGORITHM THROUGH ITERATION. ALSO CALCULATE THE WORST AND BEST COMPLEXITY WITH EXACT TIME.</h2>
+    <pre>
+        <code>
+            #include &lt;stdio.h>    
+                void insertionSort(int arr[], int size) {
+                    for (int i = 1; i &lt; size; i++) {
+                        int temp = arr[i];
+                        int j = i - 1;
+                
+                        while (j >= 0 && arr[j] > temp) {
+                            arr[j + 1] = arr[j];
+                            j--;
+                        }
+                
+                        arr[j + 1] = temp;
+                    }
+                }
+                
+                
+                int main() {
+                    int size;
+                    printf("Enter the size of the array: ");
+                    scanf("%d", &size);
+                
+                    int arr[50];
+                
+                    printf("Enter the elements:\n");
+                    for (int i = 0; i &lt; size; i++) {
+                        printf("Element %d: ", i + 1);
+                        scanf("%d", &arr[i]);
+                    }
+                
+                    insertionSort(arr, size);
+                    printf("Sorted elements are: ");
+                    for (int i = 0; i &lt; size; i++) {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
+                }
+                
+        </code>
+    </pre>
+</body>
+</html>
