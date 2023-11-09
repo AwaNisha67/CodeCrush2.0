@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q3: Enter two Matrices from user, subtract the matrices and display the answer?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    int size1, size2, i, j;
+    printf("Enter the number of Rows and Columns: ");
+    scanf("%d%d", &size1, &size2);
+
+    int mtrx1[20][30], mtrx2[20][30], sub[20][30];
+
+    printf("Enter the elements of the first matrix:\n");
+    for (i = 0; i &lt; size1; i++) {
+        for (j = 0; j &lt; size2; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &mtrx1[i][j]);
+        }
+    }
+
+    printf("Enter the elements of the second matrix:\n");
+    for (i = 0; i &lt; size1; i++) {
+        for (j = 0; j &lt; size2; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &mtrx2[i][j]);
+        }
+    }
+
+    // Subtract matrices and store the result
+    for (i = 0; i &lt; size1; i++) {
+        for (j = 0; j &lt; size2; j++) {
+            sub[i][j] = mtrx1[i][j] - mtrx2[i][j];
+        }
+    }
+
+    printf("Result of subtraction:\n");
+    for (i = 0; i &lt; size1; i++) {
+        for (j = 0; j &lt; size2; j++) {
+            printf("%d", sub[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+                
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+Enter the number of Rows and Columns: 2
+2
+Enter the elements of the first matrix:
+Enter element on [0,0]: 10
+Enter element on [0,1]: 20
+Enter element on [1,0]: 30
+Enter element on [1,1]: 40
+Enter the elements of the second matrix:
+Enter element on [0,0]: 50
+Enter element on [0,1]: 60
+Enter element on [1,0]: 30
+Enter element on [1,1]: 20
+Result of subtraction:
+-40 -40 
+0 20 
+
+</code></pre>
+</body>
+</html>

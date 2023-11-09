@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q1: Enter a matrix of 4 rows and 2 columns from the user display it in matrix format?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    int size1= 4; // 4 rows
+    int size2 = 2; // 2 columns
+    int i, j;
+
+    int matrix[4][2];
+
+    printf("Enter a matrix with 4 rows and 2 columns:\n");
+    for (i = 0; i &lt; size1; i++) {
+        for (j = 0; j &lt; size2; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    printf("Matrix entered by the user:\n");
+    for (i = 0; i &lt; size1; i++) {
+        for (j = 0; j &lt; size2; j++) {
+            printf("%4d", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+                
+        </code>
+    </pre>
+    <h2>Output:-</h2>
+<pre><code>
+Enter a matrix with 4 rows and 2 columns:
+Enter element on [0,0]: 10
+Enter element on [0,1]: 20
+Enter element on [1,0]: 30
+Enter element on [1,1]: 40
+Enter element on [2,0]: 50
+Enter element on [2,1]: 60
+Enter element on [3,0]: 70
+Enter element on [3,1]: 10
+Matrix entered by the user:
+  10  20
+  30  40
+  50  60
+  70  10
+
+</code></pre>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q6: Enter the Matrix from user, multiply it with a scalar value and display the answer?</h2>
+    <pre>
+        <code>
+#include &lt;stdio>
+void main() {
+    int rows, cols, i, j;
+    int mtrx[20][30];
+    int k;//scalar variable
+    printf("Enter the number of Rows and Columns: ");
+    scanf("%d %d", &rows, &cols);
+
+
+    printf("Enter the elements of the matrix:\n");
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &mtrx[i][j]);
+        }
+    }
+
+    printf("Enter a scalar value to multiply with the matrix: ");
+    scanf("%d", &k);
+
+    printf("Original Matrix:\n");
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            printf("%4d", mtrx[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Multiply the matrix by the scalar
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            mtrx[i][j] = mtrx[i][j] * k;
+        }
+    }
+
+    printf("Matrix after multiplication with scalar:\n");
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            printf(" %4d", mtrx[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+    
+}               
+        </code>
+    </pre>
+<h2>Output:-</h2>
+<pre><code>
+
+Enter the number of Rows and Columns: 3
+3
+Enter the elements of the matrix:
+Enter element on [0,0]: 10
+Enter element on [0,1]: 20
+Enter element on [0,2]: 30
+Enter element on [1,0]: 40
+Enter element on [1,1]: 50
+Enter element on [1,2]: 60
+Enter element on [2,0]: 70
+Enter element on [2,1]: 80
+Enter element on [2,2]: 10
+Enter a scalar value to multiply with the matrix: 10
+Original Matrix:
+  10  20  30
+  40  50  60
+  70  80  10
+Matrix after multiplication with scalar:
+  100  200  300
+  400  500  600
+  700  800  100
+
+</code></pre>
+</body>
+</html>

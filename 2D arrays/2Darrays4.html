@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q4: Enter two Matrices from user, multiply the matrices and display the answer?</h2>
+    <pre>
+        <code>
+//Multiplication of a matrix
+#include&lt;stdio.h>
+#include&lt;conio.h>
+int main() {
+    int arr1[5][5], row1, col1;
+    int arr2[5][5], row2, col2;
+    int multi[10][10];
+
+    printf("Enter the number of Rows[1st Matrix]: ");
+    scanf("%d", &row1);
+    printf("Enter the number of columns[1st Matrix]: ");
+    scanf("%d", &col1);
+    printf("Enter the elements of the Matrix1:\n");
+    for (int i = 0; i &lt; row1; i++) {
+        for (int j = 0; j &lt; col1; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &arr1[i][j]);
+        }
+    }
+
+    printf("****\t\t2nd Matrix*****\n");
+    printf("Enter the number of Rows[2nd Matrix]: ");
+    scanf("%d", &row2);
+    printf("Enter the number of columns[2nd Matrix]: ");
+    scanf("%d", &col2);
+
+    if (col1 != row2) {
+        printf("Matrix multiplication not possible. The number of columns in the 1st matrix must be equal to the number of rows in the 2nd matrix.\n");
+        return 1;
+    }
+
+    printf("Enter the elements of the Matrix2:\n");
+    for (int i = 0; i &lt; row2; i++) {
+        for (int j = 0; j &lt; col2; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &arr2[i][j]);
+        }
+    }
+
+    printf("Elements of 1st Matrix are:\n");
+    for (int i = 0; i &lt; row1; i++) {
+        for (int j = 0; j &lt; col1; j++) {
+            printf("%4d", arr1[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Elements of 2nd Matrix are:\n");
+    for (int i = 0; i &lt; row2; i++) {
+        for (int j = 0; j &lt; col2; j++) {
+            printf("%4d", arr2[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Matrix multiplication
+    for (int i = 0; i &lt; row1; i++) {
+        for (int j = 0; j &lt; col2; j++) {
+            multi[i][j] = 0;
+            for (int k = 0; k &lt; col1; k++) {
+                multi[i][j] += arr1[i][k] * arr2[k][j];
+            }
+        }
+    }
+
+    printf("Result of matrix multiplication:\n");
+    for (int i = 0; i &lt; row1; i++) {
+        for (int j = 0; j &lt; col2; j++) {
+            printf("%4d", multi[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+        </code>
+    </pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter the number of Rows[1st Matrix]: 2
+Enter the number of columns[1st Matrix]: 2
+Enter the elements of the Matrix1:
+Enter element on [0,0]: 1
+Enter element on [0,1]: 2
+Enter element on [1,0]: 3
+Enter element on [1,1]: 4
+****2nd Matrix*****
+Enter the number of Rows[2nd Matrix]: 2
+Enter the number of columns[2nd Matrix]: 2
+Enter the elements of the Matrix2:
+Enter element on [0,0]: 1
+Enter element on [0,1]: 2
+Enter element on [1,0]: 3
+Enter element on [1,1]: 4
+Elements of 1st Matrix are:
+   1   2
+   3   4
+Elements of 2nd Matrix are:
+   1   2
+   3   4
+Result of matrix multiplication:
+   7  10
+  15  22
+
+    </code></pre>
+</body>
+</html>

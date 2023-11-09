@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/quest.css" rel="stylesheet">
+
+</head>
+<body>
+    <h2>Q5: Enter a Matrix from user, copy it in another matrix of same size?</h2>
+    <pre>
+        <code>
+#include &lt;stdio.h>
+
+int main() {
+    int rows, cols, i, j;
+    printf("Enter the number of Rows and Columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    int mtrx[20][30], copied[20][30];
+
+    printf("Enter the elements of the original matrix:\n");
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            printf("Enter element on [%d,%d]: ", i, j);
+            scanf("%d", &mtrx[i][j]);
+            copied[i][j] = mtrx[i][j]; 
+        }
+    }
+
+    printf("Original Matrix:\n");
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            printf("%4d", mtrx[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Copied Matrix:\n");
+    for (i = 0; i &lt; rows; i++) {
+        for (j = 0; j &lt; cols; j++) {
+            printf("%4d", copied[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+                
+        </code>
+    </pre>
+    <h2>Output:-</h2>
+    <pre><code>
+Enter the number of Rows and Columns: 2
+2
+Enter the elements of the original matrix:
+Enter element on [0,0]: 10
+Enter element on [0,1]: 2
+Enter element on [1,0]: 30
+Enter element on [1,1]: 40
+Original Matrix:
+  10   2
+  30  40
+Copied Matrix:
+  10   2
+  30  40
+
+    </code></pre>
+</body>
+</html>
