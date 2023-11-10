@@ -9,16 +9,14 @@
 <body>
     <h2> CREATE THE GRAPH AS A ADJACENCY LIST WITH OPERATIONS SUCH AS INSERTION, DELETION</h2>
     <pre><code>
-#include <stdio.h>
-#include <stdlib.h>
+#include &lt;stdio.h>
+#include &lt;stdlib.h>
                 
-// Structure for a node in the adjacency list
 typedef struct Node {
     int data;
     struct Node* next;
 } Node;
 
-// Structure for the graph
 typedef struct Graph {
     int numVertices;
     Node** adjacencyList;
@@ -31,25 +29,21 @@ Node* createNode(int value) {
     newNode->next = NULL;
     return newNode;
 }
-
-// Function to create a new graph with a given number of vertices
 Graph* createGraph(int vertices) {
     Graph* graph = (Graph*)malloc(sizeof(Graph));
     graph->numVertices = vertices;
     graph->adjacencyList = (Node*)malloc(vertices * sizeof(Node));
-    for (int i = 0; i < vertices; i++) {
+    for (int i = 0; i &lt;vertices; i++) {
         graph->adjacencyList[i] = NULL;
     }
     return graph;
 }
 
-// Function to add an edge between two vertices
 void addEdge(Graph* graph, int source, int destination) {
     Node* newNode = createNode(destination);
     newNode->next = graph->adjacencyList[source];
     graph->adjacencyList[source] = newNode;
 
-    // For undirected graph, you might want to add the reverse edge as well.
     newNode = createNode(source);
     newNode->next = graph->adjacencyList[destination];
     graph->adjacencyList[destination] = newNode;
@@ -91,7 +85,6 @@ void deleteEdge(Graph* graph, int source, int destination) {
 
     free(currentNode);
 
-    // For undirected graph, you might want to delete the reverse edge as well.
     currentNode = graph->adjacencyList[destination];
     prevNode = NULL;
 
@@ -122,7 +115,7 @@ int main() {
     printf("Enter the number of edges: ");
     scanf("%d", &numEdges);
 
-    for (int i = 0; i < numEdges; i++) {
+    for (int i = 0; i &lt; numEdges; i++) {
         printf("Enter edge (source destination): ");
         scanf("%d %d", &source, &destination);
         addEdge(graph, source, destination);
