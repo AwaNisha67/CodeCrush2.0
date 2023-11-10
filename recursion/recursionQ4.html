@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>CONVERT A NUMBER INTO BINARY USING RECURSION</h2>
+    <pre><code>
+#include&lt;stdio.h>
+ void main()
+ {
+     int n;
+     printf("Enter a decimal number: ");
+     scanf("%d",&n);
+     convert(n);
+     }
+     void convert(int n)
+     {
+         if (n > 0)
+         {
+             convert(n / 2); //recursive call to divide the number by two
+             printf("%d ", n % 2); //prints remainder of division
+             }
+             else
+             return ;
+}
+    </code></pre>
+    <h2>OutPut:-</h2>
+    <pre><code>
+Enter a decimal number: 102
+1 1 0 0 1 1 0 
+    
+    </code></pre>
+</body>
+</html>

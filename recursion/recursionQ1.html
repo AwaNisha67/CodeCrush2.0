@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <link href="/quest.css" rel="stylesheet">
+</head>
+<body>
+    <h2>1. CALCULATE FACTORIAL OF A NUMBER USING RECURSION</h2>
+    <pre><code>
+#include&lt;stdio.h>
+int fact(int n)
+{
+    if(n==0)
+    {
+        return 1;
+    }
+    else
+    {
+        return n*fact(n-1);
+    }
+}
+void main()
+{
+    unsigned int n;
+    printf("enter a positive number ");
+    scanf("%u",&n);
+    printf("factorial is %d ",fact(n));
+}
+    </code></pre>
+    <h2>Output:-</h2>
+    <pre><code>
+enter a positive number 5
+factorial is 120 
+    </code></pre>
+</body>
+</html>

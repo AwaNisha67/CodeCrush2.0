@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>FIND THE LARGEST ELEMENT IN THE INTEGER ARRAY USING RECURSION.</h2>
+    <pre><code>
+#include&lt;stdio.h>
+int max(int arr[], int n)
+{
+if (n == 1)
+return arr[0]; // base case: when there is only one number, it's the maximum
+else {
+    int res = max(arr, n - 1); // recursive call for remaining part of the array
+    return (res > arr[n-1]) ? res : arr[n-1]; // compare with last element and return larger value
+    }
+    }
+    void main()
+    {
+        int arr[10];
+        printf("Enter elements of array\n");
+        for (int i=0;i&lt;10;i++)
+        scanf("%d",&arr[i]);
+        int mx = max(arr, 10);
+        printf("\nLargest Element %d ",mx);
+        }
+    </code></pre>
+    <h2></h2>
+    <pre><code></code></pre>
+</body>
+</html>
