@@ -9,7 +9,37 @@
 </head>
 <body>
     <h2>Q23: ENTER A SENTENCE FROM USER AND THEN ENTER THE WORD AND COUNT THE OCCURENCE OF THAT WORD IN THE SENTENCE.</h2>
-    <pre><code></code></pre>
+    <pre><code>
+                #include&lt;stdio.h>
+                #include&lt;string.h>
+                void main()
+                {
+                    char sen[100];
+                    char word[100];
+                    //char str[100];
+                    int i,count,j;
+                    count=0;
+                    printf("enter a sentance");
+                    gets(sen);
+                    printf("enter a word to check the number of existance in the sentance you just entered");
+                    scanf("%s",word);
+                    for(i=0;i&lt;strlen(sen);i++)
+                    {
+                       for(j=0;j&lt;strlen(word);j++)
+                       {
+                        if(sen[i+j]!=word[j])
+                        {
+                            break;
+                        }
+                       }
+                         if(j==strlen(word))
+                        {
+                            count=count+1;
+                        }
+                    }
+                    printf("no of time = %d",count);
+                }
+    </code></pre>
     <h2></h2>
     <pre><code></code></pre>
 </body>
