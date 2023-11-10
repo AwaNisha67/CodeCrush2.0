@@ -11,7 +11,7 @@ html{
 header{
 	background-color: #FFA500;
 	background-image: url('wave.jpg');
-	height: 140vh;
+	height: 100vh;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	max-height: 130vh;
