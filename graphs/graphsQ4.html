@@ -10,10 +10,9 @@
     <h2>TRAVERSE THE ADJACENT LIST WITH DEPTH FIRST SEARCH</h2>
     <pre><code>
                 
- #include <stdio.h>
-#include <stdlib.h>
+ #include &lt;stdio.h>
+ #include  &lt;stdlib.h>
 
-// Structure to represent a node in the adjacency list
 typedef struct Node {
     int data;
     struct Node* next;
@@ -25,12 +24,11 @@ typedef struct Graph {
     Node** adjacencyList;
 } Graph;
 
-// Function to create a new graph with 'numVertices' vertices
 Graph* createGraph(int numVertices) {
     Graph* graph = (Graph*)malloc(sizeof(Graph));
     graph->numVertices = numVertices;
     graph->adjacencyList = (Node**)malloc(numVertices * sizeof(Node*));
-    for (int i = 0; i < numVertices; i++) {
+    for (int i = 0; i &lt; numVertices; i++) {
         graph->adjacencyList[i] = NULL;
     }
     return graph;
@@ -71,7 +69,7 @@ int main() {
     scanf("%d", &numEdges);
 
     printf("Enter the edges (source destination):\n");
-    for (int i = 0; i < numEdges; i++) {
+    for (int i = 0; i &lt; numEdges; i++) {
         int source, destination;
         scanf("%d %d", &source, &destination);
         addEdge(graph, source, destination);
