@@ -10,7 +10,7 @@
 <body>
     <h2>Q19: Find the local maxima in the array?</h2>
     <pre><code>
-#include <stdio.h>
+#include &lt;stdio.h>
 
 void takeInput(int arr[])
 {
@@ -32,7 +32,7 @@ int FindLocalMaxima(int arr[], int length)
     {
         printf("%d at index %d is a local maximum\n", arr[length - 1], length - 1);
     }
-    for (int i = 1; i < length - 1; i++)
+    for (int i = 1; i &lt; length - 1; i++)
     {
         if ((arr[i] > arr[i - 1]) && (arr[i] > arr[i + 1]))
         {
