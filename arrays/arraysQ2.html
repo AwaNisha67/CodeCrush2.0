@@ -11,37 +11,28 @@
     <h1>Enter an array from user and print the array in reverse order ?</h1>
     <pre>
         <code>
-// Enter an array from user and print the array in reverse order ?
+//  Enter an array from user and copy it into another array in reverse order?
 #include&lt;stdio.h>
 void main(){
-    int arr[69],size,i;
-    printf("\nEnter the size of the array: ");
-    scanf("%d",&size);
-    
-    printf("\nEnter elements of the array: ");
-    for(i=0;i&lt;size;i++){
-        printf("\n%dth element: ",i);
-        scanf("%d",&arr[i]);
+    int arr[]={10,20,30,60,80};
+    int brr[6],size1=5,i,j;
+   for(i=size1-1;i>=0;i--){
+       brr[i]=arr[(size1-1)-i];
+   }
+    printf("Copied array: ");
+    for(i=0;i&lt;size1;i++){
+        printf("%d ",brr[i]);
     }
-    printf("\nArray in reversed-order:\n");
-    for(i=size-1;i>=0;i--){
-        printf("%4d",arr[i]);
-    }
+    printf("\n");
 }
         </code>
     </pre>
     <h2>OutPut:-</h2>
     <pre>
         <code>
-Enter the size of the array: 5
-Enter elements of the array: 
-0th element: 10
-1th element: 20
-2th element: 3
-3th element: 40
-4th element: 50
-Array in reversed-order:
-  50  40   3  20  10
+
+Copied array: 80 60 30 20 10 
+
         </code>
     </pre>
 </body>
